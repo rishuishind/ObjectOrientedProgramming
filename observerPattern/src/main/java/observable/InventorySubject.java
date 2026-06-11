@@ -5,9 +5,10 @@ import java.util.List;
 
 import main.java.observer.Observer;
 
-public class WeatherStationSubject implements Subject {
+public class InventorySubject implements Subject {
+
     private List<Observer> observers = new ArrayList<>();
-    private int tempreature = 0;
+    private int inventoryCount = 0;
 
     @Override
     public void addObserver(Observer obj) {
@@ -26,15 +27,11 @@ public class WeatherStationSubject implements Subject {
         }
     }
 
-    public void setWeather(int temp) {
-        if (this.tempreature != temp) {
-            this.tempreature = temp;
+    public void setInventory(int quantity) {
+        if (inventoryCount <= 0) {
             notifyObserver();
         }
-    }
-
-    public int getData() {
-        return this.tempreature;
+        this.inventoryCount += quantity;
     }
 
 }
